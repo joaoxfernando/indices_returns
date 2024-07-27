@@ -8,6 +8,7 @@ warnings.filterwarnings('ignore')
 
 def get_prices(tickers, start_date='2015-01-01', end_date=dt.today):
     df_price = pd.DataFrame()
+    
     for t in tickers:
         opendf = yf.download(t, start=start_date, period='1d')[['Open']]
         opendf['Ticker'] = t
@@ -26,6 +27,9 @@ def get_prices(tickers, start_date='2015-01-01', end_date=dt.today):
 
         df_price = pd.concat([df_price, prices_df])
         df_price = df_price.drop(columns=['Pregão'])
+
+    df_price.sort_values(by='Date')
     df_price.rename(columns={'Ticker': 'Índice'}, inplace=True)
     df_price.reset_index(drop=True, inplace=True)
+
     return df_price
