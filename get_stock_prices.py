@@ -26,5 +26,6 @@ def get_prices(tickers, start_date='2015-01-01', end_date=dt.today):
 
         df_price = pd.concat([df_price, prices_df])
         df_price = df_price.drop(columns=['Pregão'])
-        df_price.rename(columns={'Ticker': 'Índice'}, inplace=True)
+    df_price.rename(columns={'Ticker': 'Índice'}, inplace=True)
+    df_price.reset_index(drop=True, inplace=True)
     return df_price
