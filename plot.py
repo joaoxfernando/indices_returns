@@ -62,7 +62,6 @@ def matplotlib_plot(col_nomes, df, fcolumn, x,y,style='ggplot', grid=True):
     -------
     a plot using matplotlib
     """
-    plt.style.use(style)
 
     fig,ax = plt.subplots(figsize=(15,8))
 
